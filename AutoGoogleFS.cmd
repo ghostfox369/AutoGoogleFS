@@ -24,14 +24,14 @@ IF EXIST "%kbfix_target%" (
 ) ELSE (
     bitsadmin /transfer "KB3033929" /download /priority normal "%kbfix_source%" "%kbfix_target%"
 )
-REM WUSA "%kbfix_target%" /quiet /norestart
+WUSA "%kbfix_target%" /quiet /norestart
 
 IF EXIST "%gd_target%" (
     REM nothing
 ) ELSE (
     bitsadmin /transfer "GoogleDriveFSSetup" /download /priority normal "%gd_source%" "%gd_target%"
 )
-REM %gd_target% --silent --desktop_shortcut desktop_shortcut --gsuite_shortcuts=false >nul 2>&1
+%gd_target% --silent --desktop_shortcut desktop_shortcut --gsuite_shortcuts=false >nul 2>&1
 goto exit
 
 
@@ -41,7 +41,7 @@ IF EXIST "%gd_target%" (
 ) ELSE (
     bitsadmin /transfer "GoogleDriveFSSetup" /download /priority normal "%gd_source%" "%gd_target%"
 )
-REM %gd_target% --silent --desktop_shortcut desktop_shortcut --gsuite_shortcuts=false >nul 2>&1
+%gd_target% --silent --desktop_shortcut desktop_shortcut --gsuite_shortcuts=false >nul 2>&1
 goto exit
 
 :exit
